@@ -1,63 +1,56 @@
-@import url(https://fonts.googleapis.com/css2?family=Righteous&family=Open+Sans:wght@400;600;700&display=swap);
-
 :root {
-  --base-hue: 210;
+  /* Basalt Base Palette */
+  --basalt-base: #1a1818;
+  --basalt-dark: #121111;
+  --basalt-soft: #2a2828;
 
-  /* LCH Palette - Light Mode */
-  --lch-primary: 54% 0.23 var(--base-hue);
-  --lch-primary-light: 75% 0.15 var(--base-hue);
-  --lch-primary-dark: 40% 0.20 var(--base-hue);
+  --fg-bone: #f2ede7;
+  --bone-grey: #A9A7A3;
+  --warm-grey: #8a817c;
+  --ash-grey: #5e5855;
 
-  /* Neutrals */
-  --lch-white: 99% 0.005 var(--base-hue);
-  --lch-gray-50: 98% 0.005 var(--base-hue);
-  --lch-gray-100: 96% 0.008 var(--base-hue);
-  --lch-gray-200: 92% 0.010 var(--base-hue);
-  --lch-gray-300: 85% 0.012 var(--base-hue);
-  --lch-gray-400: 70% 0.015 var(--base-hue);
-  --lch-gray-500: 55% 0.015 var(--base-hue);
-  --lch-gray-600: 40% 0.020 var(--base-hue);
-  --lch-gray-700: 30% 0.020 var(--base-hue);
-  --lch-gray-800: 20% 0.020 var(--base-hue);
-  --lch-gray-900: 12% 0.020 var(--base-hue);
-  --lch-black: 5% 0.010 var(--base-hue);
+  --citron-bright: #e2e0a5;
+  --citron-dim: #b5b382;
+  --champagne: #f7e1a0;
 
-  /* Accent Colors */
-  --lch-accent: 60% 0.20 calc(var(--base-hue) + 180);
-  --lch-success: 65% 0.20 145;
-  --lch-warning: 75% 0.18 85;
-  --lch-error: 55% 0.22 25;
+  --cherry-red: #ff4b6b;
+  --cherry-soft: #d64d68;
+  --error-red: #ff1f48;
 
-  /* Semantic Tokens - Light Mode */
-  --color-bg-page: oklch(var(--lch-gray-200));
-  --color-bg-surface: oklch(var(--lch-white));
-  --color-bg-header: oklch(var(--lch-primary));
-  --color-bg-code: oklch(var(--lch-gray-100));
-  --color-bg-gradient-start: oklch(var(--lch-primary));
-  --color-bg-gradient-end: oklch(var(--lch-gray-200));
+  --mint-silver: #b5e8e0;
+  --selection: #4a4d6d;
+  --white: #ffffff;
 
-  --color-text-primary: oklch(var(--lch-gray-900));
-  --color-text-secondary: oklch(var(--lch-gray-600));
-  --color-text-tertiary: oklch(var(--lch-gray-500));
-  --color-text-inverted: oklch(var(--lch-white));
-  --color-text-link: oklch(var(--lch-primary-dark));
-  --color-text-link-hover: oklch(var(--lch-primary));
-  --color-text-link-visited: oklch(45% 0.18 270);
+  /* Semantic Tokens */
+  --color-bg-page: var(--basalt-dark);
+  --color-bg-surface: var(--basalt-base);
+  --color-bg-header: var(--basalt-soft);
+  --color-bg-code: var(--basalt-soft);
+  --color-bg-gradient-start: var(--basalt-soft);
+  --color-bg-gradient-end: var(--basalt-base);
 
-  --color-border-subtle: oklch(var(--lch-gray-200));
-  --color-border-default: oklch(var(--lch-gray-300));
-  --color-border-strong: oklch(var(--lch-gray-400));
+  --color-text-primary: var(--fg-bone);
+  --color-text-secondary: var(--bone-grey);
+  --color-text-tertiary: var(--warm-grey);
+  --color-text-inverted: var(--basalt-base);
+  --color-text-link: var(--citron-bright);
+  --color-text-link-hover: var(--champagne);
+  --color-text-link-visited: var(--mint-silver);
 
-  --color-shadow-sm: oklch(var(--lch-black) / 0.1);
-  --color-shadow-md: oklch(var(--lch-black) / 0.15);
-  --color-shadow-lg: oklch(var(--lch-black) / 0.25);
+  --color-border-subtle: var(--basalt-soft);
+  --color-border-default: var(--ash-grey);
+  --color-border-strong: var(--warm-grey);
 
-  --color-accent: oklch(var(--lch-accent));
-  --color-success: oklch(var(--lch-success));
-  --color-warning: oklch(var(--lch-warning));
-  --color-error: oklch(var(--lch-error));
+  --color-shadow-sm: color-mix(in srgb, #000 40%, transparent);
+  --color-shadow-md: color-mix(in srgb, #000 50%, transparent);
+  --color-shadow-lg: color-mix(in srgb, #000 70%, transparent);
 
-  /* Typography Scale (Unison) */
+  --color-accent: var(--mint-silver);
+  --color-success: var(--mint-silver);
+  --color-warning: var(--citron-bright);
+  --color-error: var(--error-red);
+
+  /* Typography Scale (unchanged) */
   --font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --font-size-sm: clamp(0.875rem, 0.83rem + 0.23vw, 1rem);
   --font-size-base: clamp(1rem, 0.91rem + 0.45vw, 1.25rem);
@@ -67,49 +60,18 @@
   --font-size-display: clamp(3rem, 1.5rem + 7.5vw, 12rem);
 
   /* Layout */
-  --header-height: 8rem;
+  --header-height: 2rem;
   --measure: 70ch;
   --gutter: clamp(1rem, 5vw, 4rem);
 
   /* Shadows */
-  --shadow-text-striped: 0.03em 0.03em 0 oklch(45% 0.15 var(--base-hue));
-  --shadow-striped-color: oklch(var(--lch-gray-200));
+  --shadow-text-striped: 0.03em 0.03em 0 var(--basalt-dark);
+  --shadow-striped-color: var(--basalt-soft);
 
   /* Transitions */
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark Mode Palette */
-    --color-bg-page: oklch(var(--lch-gray-900));
-    --color-bg-surface: oklch(var(--lch-gray-800));
-    --color-bg-header: oklch(var(--lch-primary-dark));
-    --color-bg-code: oklch(var(--lch-gray-700));
-    --color-bg-gradient-start: oklch(var(--lch-primary-dark));
-    --color-bg-gradient-end: oklch(var(--lch-gray-800));
-
-    --color-text-primary: oklch(var(--lch-gray-50));
-    --color-text-secondary: oklch(var(--lch-gray-300));
-    --color-text-tertiary: oklch(var(--lch-gray-400));
-    --color-text-inverted: oklch(var(--lch-gray-900));
-    --color-text-link: oklch(var(--lch-primary-light));
-    --color-text-link-hover: oklch(75% 0.20 var(--base-hue));
-    --color-text-link-visited: oklch(70% 0.15 280);
-
-    --color-border-subtle: oklch(var(--lch-gray-700));
-    --color-border-default: oklch(var(--lch-gray-600));
-    --color-border-strong: oklch(var(--lch-gray-500));
-
-    --color-shadow-sm: oklch(var(--lch-black) / 0.4);
-    --color-shadow-md: oklch(var(--lch-black) / 0.5);
-    --color-shadow-lg: oklch(var(--lch-black) / 0.7);
-
-    --shadow-text-striped: 0.03em 0.03em 0 oklch(25% 0.10 var(--base-hue));
-    --shadow-striped-color: oklch(var(--lch-gray-700));
-  }
 }
 
 @media (prefers-contrast: more) {
@@ -168,30 +130,6 @@ body {
   background: var(--color-bg-page);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-
-  /* Diagonal gradient background */
-  &::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    z-index: -2;
-    background: linear-gradient(to right top,
-        var(--color-bg-gradient-start) 50%,
-        var(--color-bg-gradient-end) 50%);
-    background-size: 100% calc(100% - 100dvh + var(--header-height));
-    background-repeat: no-repeat;
-  }
-
-  /* Surface underlay below header */
-  &::after {
-    content: "";
-    position: fixed;
-    inset-block-start: var(--header-height);
-    inset-block-end: 0;
-    inset-inline: 0;
-    z-index: -1;
-    background: var(--color-bg-surface);
-  }
 }
 
 header {
@@ -199,8 +137,6 @@ header {
   inset-block-start: 0;
   inset-inline: 0;
   z-index: 100;
-  block-size: var(--header-height);
-  padding: var(--gutter);
   background: var(--color-bg-header);
   box-shadow: 0 4px 12px var(--color-shadow-md);
 
@@ -215,6 +151,8 @@ header {
     & ul {
       display: flex;
       list-style: none;
+      justify-content: space-evenly;
+      width: 100%;
       gap: clamp(1ch, 2vw, 3ch);
       font-size: var(--font-size-sm);
       font-weight: 700;
@@ -249,7 +187,7 @@ main {
 }
 
 h1 {
-  font-family: "Righteous", serif;
+  font-family: "Extra Thick", serif;
   font-size: var(--font-size-display);
   line-height: 1;
   color: var(--color-text-inverted);
@@ -293,7 +231,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Righteous", serif;
+  font-family: "Extra_Thick", serif;
   font-size: var(--font-size-2xl);
   line-height: 1.2;
   margin-block-start: 3rem;
