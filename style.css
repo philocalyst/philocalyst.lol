@@ -157,6 +157,7 @@ body {
   position: relative;
   overflow: hidden;
   background: #fff;
+  margin-inline: auto;
 
   width: 50%;
 }
