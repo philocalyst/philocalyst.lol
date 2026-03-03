@@ -155,7 +155,13 @@ header {
   text-orientation: mixed;
   rotate: 180deg;
 
-  background: var(--color-bg-header);
+  background-image:
+    radial-gradient(circle 1px at 0px 0px, #000 1px, transparent 0),
+    radial-gradient(circle 1px at 0px 0px, #000 1px, transparent 0);
+  background-position: 0px 0px, 1px 1px;
+  background-size: 2px 2px, 2px 2px;
+  background-color: var(--basalt-base);
+
   box-shadow: 0 4px 12px var(--color-shadow-md);
 
   nav {
@@ -199,6 +205,12 @@ main {
   width: 90%;
   height: 100vh;
   padding: 1rem;
+
+  filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.35));
+  box-shadow:
+    0 0 40px 8px rgba(20, 8, 6, 0.55),
+    0 0 80px 20px rgba(255, 255, 255, 0.02),
+    0 0 160px 40px rgba(255, 255, 255, 0.01);
 }
 
 h1 {
