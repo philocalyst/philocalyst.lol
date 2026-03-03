@@ -31,7 +31,7 @@
 
   --color-text-primary: var(--fg-bone);
   --color-text-header: var(--mint-silver);
-  --color-text-nav: var(--champagne);
+  --color-text-nav: var(--cherry-red);
   --color-text-secondary: var(--bone-grey);
   --color-text-tertiary: var(--warm-grey);
   --color-text-inverted: var(--basalt-base);
@@ -124,6 +124,8 @@ html {
 
 body {
   min-height: 100dvh;
+  padding-top: 2rem;
+  padding-left: 1.7rem;
   margin: 0;
   font-family: "Line Seed Sans App", system-ui, sans-serif;
   font-size: var(--font-size-base);
@@ -141,7 +143,7 @@ body {
 
 header {
   position: fixed;
-  font-family: "CM Geom", system-ui, sans-serif;
+  font-family: "Nineteen Ninety Six", system-ui, sans-serif;
   font-weight: bolder;
   z-index: 100;
 
@@ -178,24 +180,12 @@ header {
 
       & li {
         margin: 0;
-        padding: 0;
+        padding: .2rem;
         position: relative;
         transition: letter-spacing 0.3s ease;
 
         &:hover {
-          letter-spacing: 1ch;
-        }
-      }
-
-      & a {
-        color: var(--color-text-inverted);
-        text-decoration: none;
-        padding: 0.5em 1em;
-        border-radius: 0.25em;
-        transition: background-color var(--transition-fast);
-
-        &:hover {
-          background-color: oklch(var(--lch-white) / 0.1);
+          letter-spacing: 0.5ch;
         }
       }
     }
@@ -204,10 +194,11 @@ header {
 
 main {
   background: var(--color-bg-page);
-  margin-block-start: calc(var(--header-height) + 2rem);
+  border-radius: .5rem;
   margin-inline: auto;
-  padding-inline: var(--gutter);
-  max-inline-size: var(--measure);
+  width: 90%;
+  height: 100vh;
+  padding: 1rem;
 }
 
 h1 {
@@ -279,6 +270,14 @@ h6 {
   margin-block-start: 1.5rem;
   margin-block-end: 0.5rem;
   font-weight: 700;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit;
+  text-decoration: none;
 }
 
 article {
