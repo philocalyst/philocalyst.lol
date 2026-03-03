@@ -1,8 +1,0 @@
-◊(require '[expressions.constants :refer [footer-items]])
-<footer role="contentinfo">
-  <nav aria-label="Footer navigation">
-    ◊(for [item footer-items])«
-    <a href="◊(:href item)">◊(:text item)</a>
-    »
-  </nav>
-</footer>
