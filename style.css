@@ -138,9 +138,16 @@ header {
   position: fixed;
   font-family: "CM Geom", system-ui, sans-serif;
   font-weight: bolder;
-  inset-block-start: 0;
-  inset-inline: 0;
   z-index: 100;
+
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: fit-content;
+
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  rotate: 180deg;
+
   background: var(--color-bg-header);
   box-shadow: 0 4px 12px var(--color-shadow-md);
 
@@ -157,7 +164,7 @@ header {
       display: flex;
       list-style: none;
       justify-content: space-evenly;
-      width: 100%;
+      height: 100vh;
       gap: clamp(1ch, 2vw, 3ch);
       font-size: var(--font-size-sm);
       font-weight: 700;
