@@ -1,0 +1,263 @@
+@layer main, base, utilities, components, layout, overrides;
+
+@layer main {
+  :root {
+    /* We separate Hue, Chroma, and Lightness to allow algorithmic generation */
+    --hue-base: 255;
+
+    /* Deep Blue */
+    --hue-accent: 150;
+
+    /* Aqua Green */
+    --hue-gray: 96;
+
+    --hue-yellow: 95;
+    --hue-blue: 250;
+
+    --chroma-neutral: 0.005;
+    --chroma-vivid: 0.23;
+
+    /* Lightness Scale (Invertible for Dark Mode) */
+    --lum-0: 99%;
+    --lum-1: 96%;
+    --lum-2: 92%;
+    --lum-3: 75%;
+    --lum-4: 45%;
+    --lum-5: 35%;
+    --lum-6: 20%;
+    --lum-deep: 10%;
+
+    --color-yellow: oklch(54% var(--chroma-vivid) var(--hue-yellow));
+    --color-yellow-light: oklch(95% 0.03 var(--hue-yellow));
+    --color-yellow-dark: oklch(var(--lum-4) 0.18 var(--hue-yellow));
+    --color-yellow-vivid: oklch(65% 0.25 var(--hue-yellow));
+
+    /* Blue Palette */
+    --color-blue: oklch(54% var(--chroma-vivid) var(--hue-blue));
+    --color-blue-light: oklch(95% 0.03 var(--hue-blue));
+    --color-blue-dark: oklch(var(--lum-4) 0.18 var(--hue-blue));
+    --color-blue-vivid: oklch(65% 0.25 var(--hue-blue));
+
+    /* Constructed Colors (OKLCH) */
+    --color-primary: oklch(54% var(--chroma-vivid) var(--hue-base));
+    --color-primary-light: oklch(95% 0.03 var(--hue-base));
+    --color-primary-dark: oklch(var(--lum-4) 0.18 var(--hue-base));
+    --color-primary-vivid: oklch(65% 0.25 240);
+
+    --color-accent: oklch(75% 0.15 var(--hue-accent));
+    --color-accent-light: oklch(90% 0.08 var(--hue-accent));
+
+    /* Surface & Text Mappings */
+    --color-surface: oklch(var(--lum-0) 0 0);
+    --color-surface-alt: oklch(
+      var(--lum-1) var(--chroma-neutral) var(--hue-gray)
+    );
+    --color-surface-code: oklch(var(--lum-deep) 0.02 260);
+
+    --color-border: oklch(var(--lum-2) var(--chroma-neutral) var(--hue-gray));
+    --color-border-dark: oklch(
+      var(--lum-3) var(--chroma-neutral) var(--hue-gray)
+    );
+
+    --color-text: oklch(var(--lum-6) 0 0);
+    --color-text-secondary: oklch(
+      var(--lum-5) var(--chroma-neutral) var(--hue-gray)
+    );
+    --color-text-inverse: oklch(99% 0 0);
+
+    /* Spacing System */
+    --space-unit: 1ch;
+    --space-xs: calc(var(--space-unit) * 0.5);
+    --space-sm: var(--space-unit);
+    --space-md: calc(var(--space-unit) * 2);
+    --space-lg: calc(var(--space-unit) * 4);
+    --space-xl: calc(var(--space-unit) * 8);
+
+    --block-unit: 1rem;
+    --block-xs: calc(var(--block-unit) * 0.5);
+    --block-sm: var(--block-unit);
+    --block-md: calc(var(--block-unit) * 2);
+    --block-lg: calc(var(--block-unit) * 4);
+    --block-xl: calc(var(--block-unit) * 8);
+
+    /* Typography Scale */
+    --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+    --text-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
+    --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+    --text-xl: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+    --text-2xl: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+    --text-3xl: clamp(3rem, 2rem + 5vw, 6rem);
+
+    /* Effects & Physics */
+    --radius-sm: 0.5em;
+    --radius-md: 1em;
+    --radius-lg: 2em;
+    --radius-full: 9999px;
+
+    --transition-fast: 125ms;
+    --transition-regular: calc(125ms * 2);
+    --transition-slow: calc(125ms * 4);
+
+    /* Shadow Primitives for "Plastic" look */
+    --shadow-plastic-inset: inset 0 2px 4px oklch(0% 0 0 / 0.5);
+    --shadow-bezel-light: inset 0 1px 1px 3px oklch(100% 0 0 / 0.3);
+    --shadow-bezel-dark: inset 0 -1px 1px 3px oklch(0% 0 0 / 0.2);
+    --shadow-drop-sm: 0 1px 1px oklch(0% 0 0 / 0.4);
+    --shadow-drop-md: 0 4px 8px oklch(0% 0 0 / 0.3);
+    --shadow-drop-lg: 0 8px 15px oklch(0% 0 0 / 0.15);
+
+    /* Gradients */
+    --dot-color: whitesmoke;
+    --bg-dots: radial-gradient(
+      circle 1px at 0px 0px,
+      var(--dot-color) 1px,
+      transparent 0
+    );
+    --bg-lime: linear-gradient(
+      oklch(82.4% 0.106 116.6),
+      oklch(87.5% 0.169 110.5)
+    );
+
+    --bg-blue-black: linear-gradient(
+      oklch(82% 0.06 275.9),
+      oklch(70% 0.08 269.2)
+    );
+    --bg-dotted-lime: var(--bg-dots) 0px 0px / 2px 2px, var(--bg-lime);
+    --bg-dotted-rain: var(--bg-dots) 0px 0px / 4px 4px, var(--bg-blue-black);
+
+    --gradient-metal: linear-gradient(
+      180deg,
+      oklch(95% 0.005 96) 0%,
+      oklch(92% 0.005 96) 25%,
+      oklch(88% 0.005 96) 47%,
+      oklch(76% 0.005 96) 53%,
+      oklch(72% 0.005 96) 75%,
+      oklch(70% 0.005 96) 100%
+    );
+
+    --metal-fx:
+      repeating-linear-gradient(
+        90deg,
+        oklch(100% 0 0 / 0) 0%,
+        oklch(100% 0 0 / 0.05) 3%,
+        oklch(100% 0 0 / 0.08) 6%,
+        oklch(100% 0 0 / 0.05) 9%,
+        oklch(100% 0 0 / 0) 12%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        oklch(0% 0 0 / 0) 0%,
+        oklch(0% 0 0 / 0.015) 2%,
+        oklch(0% 0 0 / 0.025) 4%,
+        oklch(0% 0 0 / 0.015) 6%,
+        oklch(0% 0 0 / 0) 8%
+      ),
+      repeating-linear-gradient(
+        90deg,
+        oklch(100% 0 0 / 0) 0%,
+        oklch(100% 0 0 / 0.08) 0.6%,
+        oklch(100% 0 0 / 0.12) 1.2%,
+        oklch(100% 0 0 / 0.08) 1.8%,
+        oklch(100% 0 0 / 0) 2.4%
+      );
+
+    /* Default Button Gradient (Secondary) */
+    --gradient-btn-glass: linear-gradient(
+      oklch(85% 0.005 96 / 0.625),
+      oklch(99% 0 0 / 0.625)
+    );
+  }
+
+  /* 
+     Instead of redefining everything, we invert the Lum (lightness) logic 
+     and adjust opacity of shadows/overlays.
+  */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      /* Retune core Hue for dark mode if needed */
+      --hue-base: 248;
+
+      /* Invert Lightness Scale */
+      --lum-0: 15%;
+
+      /* Surface */
+      --lum-1: 20%;
+      --lum-2: 30%;
+      --lum-3: 45%;
+      --lum-4: 75%;
+      --lum-5: 85%;
+      --lum-6: 95%;
+
+      /* Adjust Dot Color for dark background */
+      --dot-color: rgba(255, 255, 255, 0.1);
+
+      /* Tweak specific constructed colors that don't map perfectly linearly */
+      --color-primary: oklch(72% 0.16 var(--hue-base));
+      --color-border: oklch(30% 0.005 96);
+
+      /* Soften the lime gradient in dark mode */
+      --bg-lime: linear-gradient(oklch(20% 0.1 130), oklch(25% 0.1 130));
+
+      --bg-blue-black: linear-gradient(
+        oklch(35% 0.08 275.9),
+        oklch(15% 0.04 269.2)
+      );
+
+      /* Adjust plastic shadows for dark mode visibility */
+      --shadow-plastic-inset: inset 0 2px 4px oklch(0% 0 0 / 0.8);
+      --shadow-bezel-light: inset 0 1px 1px 1px oklch(100% 0 0 / 0.1);
+
+      .aqua-window {
+        background: repeating-linear-gradient(
+          oklch(26.65% 0 0),
+          oklch(26.65% 0 0) 4px,
+          oklch(30.1% 0 0) 4px,
+          oklch(30.1% 0 0) 8px
+        );
+      }
+
+      .window-title {
+        border-bottom: 1.5px solid black;
+        color: white;
+        text-shadow: 0 1px 0 black;
+      }
+
+      --gradient-metal: linear-gradient(
+        180deg,
+        oklch(40% 0.005 96) 0%,
+        oklch(37% 0.005 96) 25%,
+        oklch(33% 0.005 96) 47%,
+        oklch(25% 0.005 96) 53%,
+        oklch(21% 0.005 96) 75%,
+        oklch(18% 0.005 96) 100%
+      );
+
+      --metal-fx:
+        repeating-linear-gradient(
+          90deg,
+          oklch(100% 0 0 / 0) 0%,
+          oklch(100% 0 0 / 0.07) 3%,
+          oklch(100% 0 0 / 0.1) 6%,
+          oklch(100% 0 0 / 0.07) 9%,
+          oklch(100% 0 0 / 0) 12%
+        ),
+        repeating-linear-gradient(
+          90deg,
+          oklch(0% 0 0 / 0) 0%,
+          oklch(0% 0 0 / 0.02) 2%,
+          oklch(0% 0 0 / 0.04) 4%,
+          oklch(0% 0 0 / 0.02) 6%,
+          oklch(0% 0 0 / 0) 8%
+        ),
+        repeating-linear-gradient(
+          90deg,
+          oklch(100% 0 0 / 0) 0%,
+          oklch(100% 0 0 / 0.12) 0.6%,
+          oklch(100% 0 0 / 0.18) 1.2%,
+          oklch(100% 0 0 / 0.12) 1.8%,
+          oklch(100% 0 0 / 0) 2.4%
+        );
+    }
+  }
+}

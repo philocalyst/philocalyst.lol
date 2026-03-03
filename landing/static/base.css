@@ -1,0 +1,54 @@
+@layer base {
+  /* 
+     BASE STYLINGS
+     */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    container-type: inline-size;
+    font-family:
+      "Tenor Sans",
+      system-ui,
+      -apple-system,
+      sans-serif;
+    font-size: var(--text-base);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+
+    /* Striped Texture */
+    background-image: repeating-linear-gradient(
+      0deg,
+      var(--color-surface-alt) 0px,
+      var(--color-surface-alt) 4px,
+      var(--color-surface) 4px,
+      var(--color-surface) 8px
+    );
+  }
+
+  @keyframes subtle-pulse {
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.98;
+    }
+  }
+}

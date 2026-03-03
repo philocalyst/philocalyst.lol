@@ -1,0 +1,10 @@
+◊(require '[expressions.constants :refer [nav-items]])
+<header>
+  <nav>
+    <ul>
+      ◊(for [item nav-items])«
+      <li><a href="◊(:href item)">◊(:text item)</a></li>
+      »
+    </ul>
+  </nav>
+</header>
