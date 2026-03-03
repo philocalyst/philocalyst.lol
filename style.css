@@ -135,9 +135,17 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--citron-bright);
   background-image:
-    repeating-linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 5px, var(--shadow-striped-color) 5px, var(--shadow-striped-color) 6px),
-    repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 5px, var(--shadow-striped-color) 5px, var(--shadow-striped-color) 6px);
-  background-size: 8px 8px, 8px 8px;
+    repeating-linear-gradient(45deg,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0) 5px,
+      color-mix(in srgb, var(--citron-bright), black 20%) 5px,
+      color-mix(in srgb, var(--citron-bright), black 20%) 10px),
+    repeating-linear-gradient(-45deg,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0) 5px,
+      color-mix(in srgb, var(--citron-bright), black 20%) 5px,
+      color-mix(in srgb, var(--citron-bright), black 20%) 10px);
+  background-size: 10px 10px, 10px 10px;
 
 }
 
@@ -264,7 +272,7 @@ header {
     radial-gradient(circle 1px at 0px 0px, #000 1px, transparent 0);
   background-position: 0px 0px, 1px 1px;
   background-size: 2px 2px, 2px 2px;
-  background-color: var(--basalt-base);
+  background-color: var(--mint-silver);
 
   box-shadow: 0 4px 12px var(--color-shadow-md);
 
@@ -275,7 +283,7 @@ header {
     gap: 2rem;
     max-inline-size: var(--measure);
     margin: 0 auto;
-    color: var(--color-text-nav);
+    color: black;
 
     & ul {
       display: flex;
