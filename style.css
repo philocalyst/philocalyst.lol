@@ -167,6 +167,11 @@ header {
       & li {
         margin: 0;
         padding: 0;
+        transition: letter-spacing 0.3s ease;
+
+        &:hover {
+          letter-spacing: 1ch;
+        }
       }
 
       & a {
