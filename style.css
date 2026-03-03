@@ -133,18 +133,17 @@ body {
   color: var(--color-text-primary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--citron-bright);
   background-image:
     repeating-linear-gradient(45deg,
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0) 5px,
-      color-mix(in srgb, var(--citron-bright), black 20%) 5px,
-      color-mix(in srgb, var(--citron-bright), black 20%) 10px),
+      black 5px,
+      black 10px),
     repeating-linear-gradient(-45deg,
       rgba(0, 0, 0, 0),
       rgba(0, 0, 0, 0) 5px,
-      color-mix(in srgb, var(--citron-bright), black 20%) 5px,
-      color-mix(in srgb, var(--citron-bright), black 20%) 10px);
+      black 5px,
+      black 10px);
   background-size: 10px 10px, 10px 10px;
 
 }
@@ -385,7 +384,7 @@ h2 {
   z-index: 1;
   overflow: hidden;
   background: var(--basalt-base);
-  background: var(--selection);
+  background: var(--cherry-red);
   border-bottom: 5px dashed var(--fg-bone);
   border-radius: 15px;
 }
