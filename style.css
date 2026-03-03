@@ -133,12 +133,116 @@ body {
   color: var(--color-text-primary);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  background-color: var(--champagne);
+  background-color: var(--citron-bright);
   background-image:
     repeating-linear-gradient(45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 5px, var(--shadow-striped-color) 5px, var(--shadow-striped-color) 6px),
     repeating-linear-gradient(-45deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) 5px, var(--shadow-striped-color) 5px, var(--shadow-striped-color) 6px);
   background-size: 8px 8px, 8px 8px;
 
+}
+
+.halftone-container {
+  --halftone-size: 4px;
+  --halftone-bleed: 0.4;
+  --halftone-rotation: 0deg;
+
+  display: block;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+
+  width: 50%;
+}
+
+.halftone-layer {
+  --halftone-dot-size: calc(var(--halftone-size) * var(--halftone-bleed));
+  --halftone-color-dot-size: var(--halftone-dot-size);
+
+  position: relative;
+  filter: brightness(calc(0.5 + var(--halftone-bleed) * 0.3 - 0.02)) blur(calc(var(--halftone-size) * 0.1)) contrast(1000) blur(0.6px);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.halftone-layer .halftone-media {
+  display: block;
+  width: 100%;
+}
+
+.halftone-cmy .halftone-media {
+  filter: invert(1) brightness(0.75) invert(1) saturate(2);
+}
+
+.halftone-ink {
+  mix-blend-mode: screen;
+}
+
+.halftone-ink::before,
+.halftone-ink::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background-size: var(--halftone-size) var(--halftone-size);
+  background-blend-mode: multiply;
+  mix-blend-mode: multiply;
+}
+
+.halftone-ink::before {
+  transform: rotate(30deg);
+  background-image: radial-gradient(var(--halftone-color-dot-size) at 25% 25%,
+      #ff0,
+      #ff6,
+      #fff),
+    radial-gradient(var(--halftone-color-dot-size) at 75% 75%,
+      #ff0,
+      #ff6,
+      #fff);
+}
+
+.halftone-ink::after {
+  transform: rotate(calc(-21deg + var(--halftone-rotation))) translateX(calc(var(--halftone-size) * 0.58));
+  background-image: radial-gradient(var(--halftone-color-dot-size) at 75% 25%,
+      #f0f,
+      #f6f,
+      #fff),
+    radial-gradient(var(--halftone-color-dot-size) at 25% 75%,
+      #f0f,
+      #f6f,
+      #fff),
+    radial-gradient(var(--halftone-color-dot-size) at 75% 75%,
+      #0ff,
+      #6ff,
+      #fff),
+    radial-gradient(var(--halftone-color-dot-size) at 25% 25%,
+      #0ff,
+      #6ff,
+      #fff);
+}
+
+.halftone-k {
+  position: absolute;
+  inset: 0;
+  mix-blend-mode: multiply;
+}
+
+.halftone-k .halftone-media {
+  filter: grayscale(1) brightness(2);
+}
+
+.halftone-k::after {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  background-size: var(--halftone-size) var(--halftone-size);
+  background-blend-mode: multiply;
+  mix-blend-mode: screen;
+  transform: rotate(30deg);
+  background-image: radial-gradient(var(--halftone-color-dot-size) at 25% 25%,
+      #000,
+      #666,
+      #ccc,
+      #fff),
+    radial-gradient(var(--halftone-color-dot-size) at 75% 75%, #000, #fff);
 }
 
 header {
@@ -210,6 +314,13 @@ main {
     0 0 40px 8px rgba(20, 8, 6, 0.55),
     0 0 80px 20px rgba(255, 255, 255, 0.02),
     0 0 160px 40px rgba(255, 255, 255, 0.01);
+
+  & p {
+    padding: 2rem;
+    font-size: 1.2em;
+    font-family: "unifont";
+    font-weight: bold;
+  }
 }
 
 h1 {
@@ -267,7 +378,7 @@ h2 {
   overflow: hidden;
   background: var(--basalt-base);
   background: var(--selection);
-  border-bottom: 5px dashed white;
+  border-bottom: 5px dashed var(--fg-bone);
   border-radius: 15px;
 }
 
