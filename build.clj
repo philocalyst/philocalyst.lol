@@ -22,12 +22,12 @@
 
 (def ts-plan
   {:rules
-   [{:name "esbuild"
-     :command "esbuild --bundle --minify --target=es2020 --outfile=$out $in"
-     :description "compile $in with esbuild"}]
+   [{:name "tsgo"
+     :command "tsgo --noEmit false --target es2020 --outDir public/ $in"
+     :description "compile $in with tsgo"}]
    :builds
    (map (fn [f]
-          {:rule "esbuild"
+          {:rule "tsgo"
            :inputs (str f)
            :outputs (str "public/" (str/replace (str (str/replace (str f) #"\.ts$" ".js")) #"^static/" ""))})
         ts-files)})
