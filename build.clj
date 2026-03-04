@@ -10,7 +10,7 @@
 (def css-plan
   {:rules
    [{:name "lightningcss"
-     :command "lightningcss --minify $in -o $out"
+     :command "lightningcss --minify --bundle --targets \">= 0.25%\" $in -o $out"
      :description "minify $in with Lightning CSS"}]
    :builds
    (map (fn [f]
