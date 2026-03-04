@@ -6,6 +6,7 @@
 (require 'expressions.ninja)
 
 (def css-files (fs/glob "static" "**.css"))
+(def ts-files (fs/glob "static" "**.ts"))
 
 (def css-plan
   {:rules
@@ -19,6 +20,18 @@
            :outputs (str "public/" (str/replace (str f) #"^static/" ""))})
         css-files)})
 
+(def ts-plan
+  {:rules
+   [{:name "esbuild"
+     :command "esbuild --bundle --minify --target=es2020 --outfile=$out $in"
+     :description "compile $in with esbuild"}]
+   :builds
+   (map (fn [f]
+          {:rule "esbuild"
+           :inputs (str f)
+           :outputs (str "public/" (str/replace (str (str/replace (str f) #"\.ts$" ".js")) #"^static/" ""))})
+        ts-files)})
+
 (def default-plan (builder/default-build-plan))
 
 ; Remove the default link rules for CSS files so they don't conflict
@@ -26,8 +39,13 @@
   (update default-plan :builds
     (fn [builds]
       (remove (fn [b]
-                (and (= (:rule b) "link")
-                     (str/ends-with? (str (:inputs b)) ".css")))
+                (or
+                  (and (= (:rule b) "link")
+                       (str/ends-with? (str (:inputs b)) ".css"))
+                  (and (= (:rule b) "link")
+                       (str/ends-with? (str (:inputs b)) ".ts"))))
               builds))))
 
-(reflect/write-ninja! (expressions.ninja/generate (merge-deep filtered-plan css-plan)))
+(reflect/write-ninja!
+  (expressions.ninja/generate
+    (merge-deep filtered-plan css-plan ts-plan)))
