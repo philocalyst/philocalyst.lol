@@ -164,9 +164,7 @@
 
             devshell.startup.shellHook.text = ''
               ${hooks.shellHook}
-              (
-                flock -n 9 || exit 1
-              ) 9>/tmp/nunu_sync.lock &
+              nu
             '';
           };
         }

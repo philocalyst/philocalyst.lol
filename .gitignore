@@ -2,3 +2,4 @@
 .sass-cache/447eed04d0da413730b273f40e865c1b78057e1d
 public
 build.ninja
+/.pre-commit-config.yaml
