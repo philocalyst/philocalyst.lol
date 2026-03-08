@@ -22,7 +22,7 @@ export class ProjectCard extends HTMLElement {
       className: "card-header",
     });
 
-    const heading = Object.assign(document.createElement("h2"), {
+    const heading = Object.assign(document.createElement("h3"), {
       textContent: title,
     });
 
@@ -31,12 +31,12 @@ export class ProjectCard extends HTMLElement {
       textContent: metaText,
     });
 
-    const cardImage = Object.assign(document.createElement("img"), {
-      className: "card-image",
-      alt: imageDescription,
-      src: image,
-      loading: "lazy",
-    });
+    const cardImage = document.createElement("halftone-image");
+
+cardImage.setAttribute("class", "card-image");
+cardImage.setAttribute("alt", imageDescription);
+cardImage.setAttribute("src", image);
+cardImage.setAttribute("loading", "lazy");
 
     const cardDescription = Object.assign(document.createElement("p"), {
       className: "card-description",
