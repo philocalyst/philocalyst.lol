@@ -1,4 +1,4 @@
-class HalftoneImage extends HTMLElement {
+export class HalftoneImage extends HTMLElement {
   connectedCallback() {
     const src = this.getAttribute("src") ?? "";
     const alt = this.getAttribute("alt") ?? "";
@@ -32,4 +32,3 @@ class HalftoneImage extends HTMLElement {
   }
 }
 
-customElements.define("halftone-image", HalftoneImage);
