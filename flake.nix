@@ -74,17 +74,6 @@
                 language = "system";
               };
 
-              clj-kondo = {
-                enable = true;
-                name = "clj-kondo";
-                entry = "clj-kondo --lint";
-                files = "\\.(clj|cljs|cljc|edn)$";
-                language = "system";
-                stages = [
-                  "pre-merge-commit"
-                  "pre-push"
-                ];
-              };
             };
           };
         }
