@@ -1,6 +1,6 @@
 @font-face {
-  font-family: Line Seed Sans App;
-  src: url(/fonts/LineSeedSans.otf)format("opentype");
+  font-family: Domino Brick;
+  src: url(/fonts/domino-brick.otf)format("opentype");
   font-weight: 400;
   font-style: normal
 }
@@ -836,6 +836,12 @@ select {
   border-radius: 0.25em;
 }
 
+.okay {
+  ul {
+    margin: 2%;
+  }
+}
+
 li {
   width: 50%;
 }
@@ -848,7 +854,7 @@ project-card {
   --clr0-light: #54f8c1;
   --text-clr: #fff;
   --text2-clr: #999;
-  --display-font: "Space Mono", "Iosevka", monospace;
+  --display-font: "Domino Brick", "Iosevka", monospace;
   --ease: cubic-bezier(0.8, 0, 1, 1);
 
   display: grid;
@@ -939,7 +945,7 @@ project-card {
     h3 {
       margin: 0;
       font-family: var(--display-font);
-      font-size: 18px;
+      font-size: 2rem;
       font-style: italic;
       font-weight: bold;
       line-height: 1.4;
