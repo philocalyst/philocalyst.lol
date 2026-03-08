@@ -1,7 +1,10 @@
 ---
 title: Home
 ---
-## About
+
+About
+-----
+
 Welcome to the site.
 
 I'm Miles :)
